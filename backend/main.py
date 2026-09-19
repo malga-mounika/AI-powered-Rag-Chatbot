@@ -45,8 +45,9 @@ app.add_middleware(
     CORSMiddleware,
 
     allow_origins=[
-        "http://localhost:5173"
-    ],
+    "http://localhost:5173",
+    "https://ai-rag-chatbot-l9wo8j6dx-malga-mounikas-projects.vercel.app"
+],
 
     allow_credentials=True,
 
