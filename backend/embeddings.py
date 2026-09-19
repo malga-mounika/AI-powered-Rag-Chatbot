@@ -1,17 +1,23 @@
-from sentence_transformers import SentenceTransformer
+model = None
 
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+def get_model():
+    global model
+
+    if model is None:
+        from sentence_transformers import SentenceTransformer
+        model = SentenceTransformer("all-MiniLM-L6-v2")
+
+    return model
 
 
 def create_embeddings(chunks):
+    model = get_model()
     embeddings = model.encode(chunks)
-
     return embeddings
 
 
 if __name__ == "__main__":
-
     text = [
         "Binary search has O(log n) time complexity.",
         "Arrays store elements in contiguous memory.",
